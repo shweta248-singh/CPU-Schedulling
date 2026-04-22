@@ -11,7 +11,7 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: "https://your-frontend.onrender.com"
+  origin: "https://cpu-schedulling-2.onrender.com"
 }));
 
 app.use(express.json());
