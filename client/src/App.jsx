@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+const API_URL = import.meta.env.VITE_API_URL;
+
 import { Activity, History as HistoryIcon } from 'lucide-react';
 import ProcessInputForm from './components/ProcessInputForm';
 import GanttChart from './components/GanttChart';
@@ -16,7 +18,7 @@ const App = () => {
 
   const fetchHistory = async () => {
     try {
-      const res = await axios.get('http://localhost:5001/api/history');
+      const res = await axios.get(`${API_URL}/api/history`);
       setHistoryData(res.data);
     } catch (err) {
       console.error('Failed to fetch history', err);
@@ -31,7 +33,7 @@ const App = () => {
     setIsSimulating(true);
     setError(null);
     try {
-      const res = await axios.post('http://localhost:5001/api/simulate', data);
+      const res = await axios.post(`${API_URL}/api/simulate`, data);
       setResultData(res.data);
       // Refresh history silently
       fetchHistory();
