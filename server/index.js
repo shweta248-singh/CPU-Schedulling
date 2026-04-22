@@ -10,11 +10,18 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "https://your-frontend.onrender.com"
+}));
+
 app.use(express.json());
 
 // Routes
 app.use('/api', apiRoutes);
+app.get("/", (req, res) => {
+  res.send("API is running 🚀");
+});
+
 
 const PORT = process.env.PORT || 5000;
 
